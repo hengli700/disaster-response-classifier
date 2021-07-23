@@ -45,6 +45,9 @@ def build_model():
     #         'clf__estimator__n_estimators': (10, 50),
     #         # 'clf__estimator__min_samples_split': (2, 4)
     #     }
+
+    # use only one parameter to facilitate deployment on Heroku due to limited app size.
+
     parameters = {
         'clf__estimator__n_estimators': [10],
     }
