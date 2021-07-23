@@ -1,0 +1,5 @@
+.idea
+app/__pycache__/
+__pycache__
+responseenv
+.DS_Store
