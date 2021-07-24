@@ -1,7 +1,7 @@
-import sys
 import pickle
 import pandas as pd
 
+# system path trick to import tokenize from utils
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import tokenize
@@ -18,6 +18,14 @@ from sklearn.model_selection import GridSearchCV
 
 
 def load_data(database_filepath):
+    """
+    Load data from store SQLite database.
+    :param database_filepath: filepath where SQLite database is stored
+    :return: (X, Y, category_names).
+    X: numpy.ndarray containing values of 'message' column.
+    Y: numpy.ndarray containing values (1 or 0) for individual category specific to the 'message' column.
+    category_names: list containing values of category names
+    """
     # load data from database
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql_table('DisasterResponse', engine)
@@ -31,6 +39,12 @@ def load_data(database_filepath):
 
 
 def build_model():
+    """
+    Build optimizer model to be trained on. The model include a pipeline consisted of CountVectorizer, TfidfTransformer, and
+    MultiOutputClassifier. In addition, the model also performs GridSearch with cross validation to find best
+    parameters according to provided parameter grid.
+    :return: A optimizer with estimator to be trained on
+    """
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -58,6 +72,14 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    Evaluate trained model and output classification report for each category.
+    :param model: Trained optimizer with estimator
+    :param X_test: Test set for observations ('message')
+    :param Y_test: Test set for labels (individual category)
+    :param category_names: Category names
+    :return:
+    """
     Y_pred = model.predict(X_test)
     for col_index in range(len(category_names)):
         category = category_names[col_index]
@@ -67,6 +89,11 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    """
+    Pickle trained model.
+    :param model: Trained optimizer with estimator
+    :param model_filepath: Filepath to save model
+    """
     pickle.dump(model, open(model_filepath, mode='wb'))
 
 
