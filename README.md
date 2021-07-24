@@ -19,10 +19,10 @@
 5. Example screenshots of index page and classification:<br>
     <div>
       <h4>Index Page</h4>
-      <img src="/images/index_page.png" alt="index page" width="45%"/>
+      <img src="/images/index_page.png" alt="index page" width="60%"/>
    </div>
    <div>
       <h4>Classification Page</h4>
-      <img src="/images/classifying_example.png"  alt="classification example" width="45%"/>
+      <img src="/images/classifying_example.png"  alt="classification example" width="60%"/>
    </div>
     
