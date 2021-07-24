@@ -1,4 +1,5 @@
-# Disaster Response Classifier
+## Disaster Response Classifier
+Author: Heng Li
 ### Summary:
 This project is aimed at constructing a web-based pipeline to classify messages potentially related to disaster response. 
 If related, the message is further classified into an individual category, such as 'Request', 'Food', 'Water', etc. This 
@@ -35,3 +36,6 @@ organizations to quickly identify needs from areas and people struck by disaster
       <img src="/images/classifying_example.png"  alt="classification example" width="60%"/>
    </div>
     
+### Acknowledgement:
+This project was made possible because of the dataset provided by [Figure Eight](www.figure-eight.com) and training from
+[Udacity](https://www.udacity.com/) Data Scientist Nanodegree
