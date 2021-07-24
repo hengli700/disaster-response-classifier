@@ -1,5 +1,6 @@
 import json
 
+# system path trick to import tokenize
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import tokenize
@@ -11,11 +12,14 @@ from flask import Flask
 from flask import render_template, request
 from plotly.graph_objs import Bar
 from sqlalchemy import create_engine
+
+# download necessary nltk toolkits
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
+# create the Flask instance.
 app = Flask(__name__)
 
 
@@ -31,7 +35,7 @@ global model
 model = joblib.load(model_filename)
 
 
-# index webpage displays cool visuals and receives user input text for model
+# index webpage displays visuals and receives user input text for model
 @app.route('/')
 @app.route('/index')
 def index():
