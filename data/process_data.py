@@ -4,6 +4,12 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    """
+    Load disaster response messages and categories csv files, merge them into one DataFrame and return the DataFrame.
+    :param messages_filepath: filepath to messages.csv
+    :param categories_filepath: filepath to categories.csv
+    :return: pandas DataFrame with messages and categories
+    """
     # read messages.csv and categories.csv into pandas dataframes
     messages_df = pd.read_csv(messages_filepath)
     categories_df = pd.read_csv(categories_filepath)
@@ -13,6 +19,12 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    """
+    Clean response data, including extracting individual categories and removing duplicates/null entries.
+    :param df: DataFrame containing raw messages and categories response data
+    :return: pandas DataFrame with cleaned messages and categories, columns=['id', 'message', 'original', 'genre',
+    INDIVIDUAL_CATEGORY]
+    """
     # extract individual 36 categories from the first row
     categories = df['categories'].str.split(';', expand=True)
     row = categories.loc[0, :]
@@ -39,6 +51,11 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """
+    Save cleaned DataFrame into a local SQLite database.
+    :param df: DataFrame to be stored into SQLite database
+    :param database_filename: name of SQLite database
+    """
     # save the clean dataset into an sqlite database
     engine = create_engine(f'sqlite:///{database_filename}.db')
     df.to_sql(database_filename, engine, if_exists='replace', index=False)
