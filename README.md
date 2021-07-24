@@ -18,6 +18,6 @@
    
 5. Example screenshots of index page and classification:<br>
     <div>
-      <img src="/images/index_page.png" alt="index page" width="30%"/>
-      <img src="/images/classifying_example.png"  alt="classification example" width="30%"/> 
+      <img src="/images/index_page.png" alt="index page" width="50%"/>
+      <img src="/images/classifying_example.png"  alt="classification example" width="50%"/> 
     </div>
