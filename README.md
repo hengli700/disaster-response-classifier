@@ -12,3 +12,12 @@
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+4. Access web app deployed at Heroku at: <br>
+   https://response-classifier-webapp.herokuapp.com/
+   
+5. Example screenshots of index page and classification:<br>
+    <p>
+      <img src="/images/index_page.png" alt="index page"/>
+      <img src="/images/classifying_example.png"  alt="classification example"/> 
+    </p>
