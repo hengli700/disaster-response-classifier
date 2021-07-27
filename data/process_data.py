@@ -57,8 +57,8 @@ def save_data(df, database_filename):
     :param database_filename: name of SQLite database
     """
     # save the clean dataset into an sqlite database
-    engine = create_engine(f'sqlite:///{database_filename}.db')
-    df.to_sql(database_filename, engine, if_exists='replace', index=False)
+    engine = create_engine(f'sqlite:///{database_filename}')
+    df.to_sql('DisasterResponse', engine, if_exists='replace', index=False)
 
 
 def main():
